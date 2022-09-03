@@ -24,5 +24,4 @@ ft<-fmmodel(table)
 ft
 }
 
-
 }

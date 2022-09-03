@@ -25,8 +25,6 @@
 #'
 
 
-
-
 fmmodel<-function(tab){
   newtb<-tab%>%head(-1)
   names(newtb)<-as.character(1:ncol(newtb))
