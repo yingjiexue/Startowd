@@ -20,3 +20,4 @@ Imports:
   stringr,
   utils,
   stringi
+BugReports: https://github.com/yingjiexue/Startowd/issues
