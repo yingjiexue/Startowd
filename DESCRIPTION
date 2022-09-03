@@ -1,0 +1,22 @@
+Package: Startowd
+Type: Package
+Title: Modify Html Table Style From Stargazer  
+Version: 0.1.0
+Author: Xue Yingjie
+Maintainer: The package maintainer <yingjiexuesuwfe@163.com>
+Description: Modify html table style from Stargazer package and convert it to flextable.
+License: MIT + file LICENSE
+Encoding: UTF-8
+URL: https://github.com/yingjiexue/Startowd
+Rbuildignore: data_raw
+NeedsCompilation: no
+Packaged: 2022-09-03 02:39:03 UTC; yingjie
+RoxygenNote: 7.2.1
+Imports: 
+  flextable, 
+  rvest, 
+  magrittr, 
+  officer, 
+  stringr,
+  utils,
+  stringi
