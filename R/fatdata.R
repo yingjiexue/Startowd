@@ -44,5 +44,6 @@ fatdat<-function(x,align="center"){
   ft<-style(ft,pr_c=def_cell,part = "header")
   def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))
   ft<-style(ft,nr,1:nc,pr_c=def_bott)
+  ft<-set_table_properties(ft, layout = "autofit")
   return(ft)
 }
