@@ -46,7 +46,7 @@ fmmodel<-function(tab){
   ft<-style(ft,1:nrow(newtb),2:ncol(newtb),pr_p=def_par)
   def_cell<-fp_border(color = "black",width = 1)
   ft<-surround(ft,c(1,sposit+2,obs),1:ncol(newtb),border.top=def_cell)
-  ft<-surround(ft,nrow(newtb),1:ncol(newtb),border.bottom =def_bott)
+  ft<-surround(ft,nrow(newtb),1:ncol(newtb),border.bottom =def_cell)
   ft<-add_footer_lines(ft,stri_encode("\u6ce8\uff1a\u62ec\u53f7\u5185\u4e3a\u56de\u5f52\u7cfb\u6570\u5bf9\u5e94\u7684t\u7edf\u8ba1\u91cf\u3002\u5176\u4e2d***\u3001**\u548c*\u5206\u522b\u4ee3\u8868\u7cfb\u6570\u57281%\u30015%\u548c10%\u7684\u7f6e\u4fe1\u6c34\u5e73\u4e0b\u663e\u8457\u3002"))
   return(ft)
 }
