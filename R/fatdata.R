@@ -26,6 +26,7 @@
 #'
 
 
+
 fatdat<-function(x,align="center"){
   len<-length(unique(names(x)))
   if(len==1){

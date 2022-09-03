@@ -23,7 +23,9 @@
 #' ft
 #' }
 #'
-#'
+
+
+
 
 fmmodel<-function(tab){
   newtb<-tab%>%head(-1)

@@ -21,6 +21,7 @@
 #' }
 #'
 
+
 gettable<-function(filename){
   if(!str_detect(filename,'.html|.htm')){
     return(stri_encode("\u6587\u4ef6\u7c7b\u578b\u9519\u8bef\uff0c\u8bf7\u8f93\u5165htm\u6216html\u683c\u5f0f\u7684\u6587\u4ef6"))
