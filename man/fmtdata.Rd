@@ -20,7 +20,7 @@ the function is to format a summary data
 }
 \examples{
 \dontrun{
-fname<-system.file("extdata","summary.html",package = "Startowd",mustWork = TRUE)
+fname<-system.file("extdata","summary.html",package = "startowd",mustWork = TRUE)
 table<-gettable(fname)
 ft<-fatdat(table)
 ft

@@ -13,11 +13,11 @@ fmmodel(tab)
 The default method returns table
 }
 \description{
-the function is to format a model table style from html file  produced by Stargazer package
+the function is to format a model table style from html file  produced by stargazer package
 }
 \examples{
 \dontrun{
-fname<-system.file("extdata","table.html",package = "Startowd",mustWork = TRUE)
+fname<-system.file("extdata","table.html",package = "startowd",mustWork = TRUE)
 table<-gettable(fname)
 print(table)
 ft<-fmmodel(table)
