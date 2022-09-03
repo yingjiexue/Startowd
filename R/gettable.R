@@ -16,7 +16,7 @@
 #' @examples
 #'
 #' \dontrun{
-#' fname<-system.file("extdata","table.html",package = "Startowd",mustWork = TRUE)
+#' fname<-system.file("extdata","table.html",package = "startowd",mustWork = TRUE)
 #' table<-gettable(fname)
 #' }
 #'
