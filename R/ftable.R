@@ -5,6 +5,8 @@
 #' @description  the function is to format a model table style from html file  produced by stargazer package
 #'
 #' @param tab A data frame
+#' @param ftsz the size of font in the table
+#' @param ftname the name of font in the table
 #' @return The default method returns table
 #'
 #' @import flextable
@@ -25,7 +27,7 @@
 #'
 
 
-fmmodel<-function(tab){
+fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
   newtb<-tab%>%head(-1)
   names(newtb)<-as.character(1:ncol(newtb))
   sposit<-which(newtb=="(1)",arr.ind = T)[1,1]-1
@@ -48,5 +50,8 @@ fmmodel<-function(tab){
   ft<-surround(ft,c(1,sposit+2,obs),1:ncol(newtb),border.top=def_cell)
   ft<-surround(ft,nrow(newtb),1:ncol(newtb),border.bottom =def_cell)
   ft<-add_footer_lines(ft,stri_encode("\u6ce8\uff1a\u62ec\u53f7\u5185\u4e3a\u56de\u5f52\u7cfb\u6570\u5bf9\u5e94\u7684t\u7edf\u8ba1\u91cf\u3002\u5176\u4e2d***\u3001**\u548c*\u5206\u522b\u4ee3\u8868\u7cfb\u6570\u57281%\u30015%\u548c10%\u7684\u7f6e\u4fe1\u6c34\u5e73\u4e0b\u663e\u8457\u3002"))
+  ft<-font(ft,fontname=ftname,part="all")
+  ft<-font(ft,fontname="宋体",part="footer")
+  ft<-fontsize(ft,size=ftsz,part = "all")
   return(ft)
 }

@@ -4,10 +4,14 @@
 \alias{fmmodel}
 \title{fmmodel}
 \usage{
-fmmodel(tab)
+fmmodel(tab, ftsz = 9, ftname = "Time New Roma")
 }
 \arguments{
 \item{tab}{A data frame}
+
+\item{ftsz}{the size of font in the table}
+
+\item{ftname}{the name of font in the table}
 }
 \value{
 The default method returns table

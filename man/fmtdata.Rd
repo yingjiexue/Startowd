@@ -5,12 +5,16 @@
 \alias{fatdat}
 \title{fmtdata}
 \usage{
-fatdat(x, align = "center")
+fatdat(x, ftsz = 9, ftname = "Time New Roma", align = "center")
 }
 \arguments{
 \item{x}{A data frame}
 
-\item{align}{a align way of table text}
+\item{ftsz}{the size of font in the table}
+
+\item{ftname}{the name of font in the table}
+
+\item{align}{a align way of the table text}
 }
 \value{
 The default method returns table

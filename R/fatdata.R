@@ -5,7 +5,9 @@
 #' @description  the function is to format a summary data
 #'
 #' @param x A data frame
-#' @param align a align way of table text
+#' @param ftsz the size of font in the table
+#' @param ftname the name of font in the table(default:9pt)
+#' @param align a align way of the table text(default:Time New Roma)
 #' @return The default method returns table
 #'
 #' @import flextable
@@ -26,7 +28,7 @@
 #'
 
 
-fatdat<-function(x,align="center"){
+fatdat<-function(x,ftsz=9,ftname="Time New Roma",align="center"){
   len<-length(unique(names(x)))
   if(len==1){
     names(x)<-unlist(x[1,])
@@ -45,5 +47,8 @@ fatdat<-function(x,align="center"){
   def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))
   ft<-style(ft,nr,1:nc,pr_c=def_bott)
   ft<-set_table_properties(ft, layout = "autofit")
+  ft<-font(ft,fontname=ftname,part="all")
+  ft<-font(ft,fontname="宋体",part="footer")
+  ft<-fontsize(ft,size=ftsz,part = "all")
   return(ft)
 }
