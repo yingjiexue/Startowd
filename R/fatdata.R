@@ -47,8 +47,8 @@ fatdat<-function(x,ftsz=9,ftname="Time New Roma",align="center"){
   def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))
   ft<-style(ft,nr,1:nc,pr_c=def_bott)
   ft<-set_table_properties(ft, layout = "autofit")
-  ft<-font(ft,fontname=ftname,part="all")
-  ft<-font(ft,fontname="宋体",part="footer")
+  ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
+  ft<-font(ft,fontname="\u5b8b\u4f53",part="footer")
   ft<-fontsize(ft,size=ftsz,part = "all")
   return(ft)
 }
