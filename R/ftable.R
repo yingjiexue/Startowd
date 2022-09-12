@@ -73,7 +73,6 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
     }
   }
   ft<-border_remove(ft)
-  ft<-delete_part(ft,part="header")
   ft <- set_table_properties(ft, layout = "autofit")
   def_par <- fp_par(text.align = "center")
   ft<-style(ft,1:nrow(newtb),2:ncol(newtb),pr_p=def_par)
@@ -84,5 +83,7 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
   ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
   ft<-font(ft,fontname="\u5b8b\u4f53",part="footer")
   ft<-fontsize(ft,size=ftsz,part = "all")
+  ft<-delete_part(ft,part="header")
+  ft<-surround(ft,1,1:ncol(newtb),border.top=def_cell)
   return(ft)
 }
