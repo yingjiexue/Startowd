@@ -36,9 +36,34 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
   for(rowns in 1:sposit){
     namva<-unique(t(newtb[rowns,2:ncol(newtb)])%>%as.vector())
     for(cols in 1:length(namva)){
-      mtop<-max(which(newtb==namva[cols],arr.ind = T)[,2])
-      mtao<-min(which(newtb==namva[cols],arr.ind = T)[,2])
-      ft<-ft%>%merge_at(i=rowns,j=mtao:mtop)
+      ids<-which(newtb==namva[cols],arr.ind = T)[,2]
+      l<-length(ids)-1
+      if(l==0){
+        next
+      }
+      grup<-NULL
+      ismerg<-NULL
+      cout=1
+      for(num in 1:l){
+        if(ids[num+1]-ids[num]==1){
+          grup[num]=grup[num+1]=cout
+          ismerg[num]=ismerg[num+1]=1
+        }else{
+          grup[num]=cout
+          grup[num+1]=cout+1
+          ismerg[num]=ismerg[num+1]=0
+          cout=cout+1
+        }
+
+      }
+      recod<-data.frame(grup,ismerg,ids)[ismerg==1,]
+      if(nrow(recod!=0)){
+        for(idex in unique(recod$grup)){
+          mtop<-max(recod$ids[recod$grup==idex])
+          mtao<-min(recod$ids[recod$grup==idex])
+          ft<-ft%>%merge_at(i=rowns,j=mtao:mtop)
+        }
+      }
     }
   }
   ft<-border_remove(ft)
