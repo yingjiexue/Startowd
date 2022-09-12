@@ -40,8 +40,13 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
   names(bodyc)<-as.character(c(" ",newtb[sposit+1,2:ncol(newtb)]))
 
   ft<-flextable(bodyc)
-  for(adhd in sposit:1){
-    ft<-add_header_row(ft,values = as.vector(t(newtb[adhd,])),
+  for(adhd in sposit:0){
+    if(adhd==sposit){
+      vhead<-rep('',ncol(newtb))
+    }else{
+      vhead<-as.vector(t(newtb[adhd+1,]))
+    }
+    ft<-add_header_row(ft,values = vhead,
                        colwidths = rep(1,ncol(newtb)))
   }
 
@@ -87,8 +92,8 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
   ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
   def_cell<-fp_border(color = "black",width = 1)
   ft<-surround(ft,1,1:ncol(newtb),border.top=def_cell,part = "header")
-  ft<-surround(ft,c(1,obs-sposit-1),1:ncol(newtb),border.top=def_cell)
-  ft<-surround(ft,nrow(bodyc),1:ncol(bodyc),border.bottom =def_cell)
+  ft<-surround(ft,sposit+2,1:ncol(newtb),border.bottom =def_cell,part = "header")
+  ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell)
   ft<-add_footer_lines(ft,stri_encode("\u6ce8\uff1a\u62ec\u53f7\u5185\u4e3a\u56de\u5f52\u7cfb\u6570\u5bf9\u5e94\u7684t\u7edf\u8ba1\u91cf\u3002\u5176\u4e2d***\u3001**\u548c*\u5206\u522b\u4ee3\u8868\u7cfb\u6570\u57281%\u30015%\u548c10%\u7684\u7f6e\u4fe1\u6c34\u5e73\u4e0b\u663e\u8457\u3002"))
   ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
   ft<-font(ft,fontname="\u5b8b\u4f53",part="footer")
