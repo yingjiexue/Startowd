@@ -28,7 +28,12 @@
 
 
 fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
-  newtb<-tab%>%head(-1)
+  if(as.vector(tab[nrow(tab),1]=="Note:")){
+    newtb<-tab%>%head(-1)
+  }else{
+    newtb<-tab
+  }
+
   names(newtb)<-as.character(1:ncol(newtb))
   sposit<-which(newtb=="(1)",arr.ind = T)[1,1]-1
   obs<-which(newtb=="Observations",arr.ind = T)[1,1]
@@ -37,6 +42,7 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
     namva<-unique(t(newtb[rowns,2:ncol(newtb)])%>%as.vector())
     for(cols in 1:length(namva)){
       ids<-which(newtb==namva[cols],arr.ind = T)[,2]
+      ids<-ids[ids>1]
       l<-length(ids)-1
       if(l==0){
         next
