@@ -12,9 +12,9 @@ fatdat(x, ftsz = 9, ftname = "Time New Roma", align = "center")
 
 \item{ftsz}{the size of font in the table}
 
-\item{ftname}{the name of font in the table}
+\item{ftname}{the name of font in the table(default:9pt)}
 
-\item{align}{a align way of the table text}
+\item{align}{a align way of the table text(default:Time New Roma)}
 }
 \value{
 The default method returns table
