@@ -10,6 +10,7 @@ fatdat(
   langu = "C",
   tabname = "",
   notehead = "",
+  notefoot = "",
   ftsz = 9,
   ftname = "Time New Roma",
   align = "center"
@@ -22,7 +23,9 @@ fatdat(
 
 \item{tabname}{add table name to header}
 
-\item{notehead}{is table footer, the default is none.}
+\item{notehead}{is a note before the table header,the default is none.}
+
+\item{notefoot}{is table footer, the default is none.}
 
 \item{ftsz}{the size of font in the table(default:9pt)}
 
