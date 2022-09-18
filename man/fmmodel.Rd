@@ -4,14 +4,26 @@
 \alias{fmmodel}
 \title{fmmodel}
 \usage{
-fmmodel(tab, ftsz = 9, ftname = "Time New Roma")
+fmmodel(
+  tab,
+  langu = "C",
+  tabname = "",
+  notehead = "",
+  notefoot = "",
+  ftsz = 9,
+  ftname = "Time New Roma"
+)
 }
 \arguments{
 \item{tab}{A data frame}
 
-\item{ftsz}{the size of font in the table}
+\item{langu}{is a mark which means your paper enviroment is chinese or English, the default is "C", if you want to create a table in English, you can set parameter langu="E".}
 
-\item{ftname}{the name of font in the table}
+\item{notehead}{is table footer, the default is none.}
+
+\item{ftsz}{is a integer, you can set you table font size by it. the default is 9.}
+
+\item{ftname}{is table font name.  the default is  "Time New Roma".}
 }
 \value{
 The default method returns table

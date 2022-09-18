@@ -7,6 +7,11 @@
 #' @param tab A data frame
 #' @param ftsz the size of font in the table
 #' @param ftname the name of font in the table
+#' @param langu is a mark which means your paper enviroment is chinese or English, the default is "C", if you want to create a table in English, you can set parameter langu="E".
+#' @param notehead is a note before the table header,the default is none.
+#' @param notehead is table footer, the default is none.
+#' @param ftsz is a integer, you can set you table font size by it. the default is 9.
+#' @param ftname is table font name.  the default is  "Time New Roma".
 #' @return The default method returns table
 #'
 #' @import flextable
@@ -27,7 +32,7 @@
 #'
 
 
-fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
+fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="Time New Roma"){
   #set_flextable_defaults(padding = 4)
   if(as.vector(tab[nrow(tab),1]=="Note:")){
     newtb<-tab%>%head(-1)
@@ -42,7 +47,7 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
 
   ft<-flextable(bodyc)
 
-  if(sposit>1){
+  if(sposit>1|langu!="C"){
     sph<-sposit+1
     for(adhd in sposit:1){
       ft<-add_header_row(ft,values = as.vector(t(newtb[adhd,])),
@@ -98,21 +103,68 @@ fmmodel<-function(tab,ftsz=9,ftname="Time New Roma"){
       }
     }
   }
-  ft<-border_remove(ft)
+
   ft <- set_table_properties(ft, layout = "autofit")
-  def_par <- fp_par(text.align = "center")
-  ft<-style(ft,1:sph,2:ncol(bodyc),pr_p=def_par,part = "header")
-  ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
-  def_cell<-fp_border(color = "black",width = 1)
-  ft<-surround(ft,1,1:ncol(newtb),border.top=def_cell,part = "header")
-  ft<-surround(ft,sph,1:ncol(newtb),border.bottom =def_cell,part = "header")
-  ft<-padding(ft, padding  = 0, part = "header")
-  ft <- height(ft, height = 0, part = "header")
-  ft <- hrule(ft, rule = "exact", part = "header")
-  ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
-  ft<-add_footer_lines(ft,stri_encode("\u6ce8\uff1a\u62ec\u53f7\u5185\u4e3a\u56de\u5f52\u7cfb\u6570\u5bf9\u5e94\u7684t\u7edf\u8ba1\u91cf\u3002\u5176\u4e2d***\u3001**\u548c*\u5206\u522b\u4ee3\u8868\u7cfb\u6570\u57281%\u30015%\u548c10%\u7684\u7f6e\u4fe1\u6c34\u5e73\u4e0b\u663e\u8457\u3002"))
-  ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
-  ft<-font(ft,fontname="\u5b8b\u4f53",part="footer")
-  ft<-fontsize(ft,size=ftsz,part = "all")
-  return(ft)
+
+  if(langu=="C"){
+    ft<-border_remove(ft)
+    def_par <- fp_par(text.align = "center")
+    ft<-style(ft,1:sph,2:ncol(bodyc),pr_p=def_par,part = "header")
+    ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
+    def_cell<-fp_border(color = "black",width = 1)
+    ft<-surround(ft,1,1:ncol(newtb),border.top=def_cell,part = "header")
+    ft<-surround(ft,sph,1:ncol(newtb),border.bottom =def_cell,part = "header")
+    ft<-padding(ft, padding  = 0, part = "header")
+    ft <- height(ft, height = 0, part = "header")
+    ft <- hrule(ft, rule = "exact", part = "header")
+    ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
+    ft<-add_footer_lines(ft,stri_encode("\u6ce8\uff1a\u62ec\u53f7\u5185\u4e3a\u56de\u5f52\u7cfb\u6570\u5bf9\u5e94\u7684t\u7edf\u8ba1\u91cf\u3002\u5176\u4e2d***\u3001**\u548c*\u5206\u522b\u4ee3\u8868\u7cfb\u6570\u57281%\u30015%\u548c10%\u7684\u7f6e\u4fe1\u6c34\u5e73\u4e0b\u663e\u8457\u3002"))
+    ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
+    ft<-font(ft,fontname="\u5b8b\u4f53",part="footer")
+    ft<-fontsize(ft,size=ftsz,part = "all")
+    return(ft)
+  }else{
+
+    if(tabname==""&notehead==""){
+      ft<-border_remove(ft)
+      def_par <- fp_par(text.align = "center")
+      ft<-style(ft,1:sph,2:ncol(bodyc),pr_p=def_par,part = "header")
+      ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
+      def_cell<-fp_border(color = "black",width = 1)
+      ft<-surround(ft,1,1:ncol(newtb),border.top=def_cell,part = "header")
+      ft<-surround(ft,sph,1:ncol(newtb),border.bottom =def_cell,part = "header")
+      ft<-padding(ft, padding  = 0, part = "header")
+      ft <- height(ft, height = 0, part = "header")
+      ft <- hrule(ft, rule = "exact", part = "header")
+      ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
+      ft<-add_footer_lines(ft,)
+      ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
+      ft<-fontsize(ft,size=ftsz,part = "all")
+      return(ft)
+    }else{
+      heads<-paste0(tabname,"\n",notehead)
+      ft<-add_header_lines(ft,values =heads )
+      ft<-border_remove(ft)
+      def_parf <- fp_par(text.align = "left")
+      ft<-style(ft,1,2:ncol(bodyc),pr_p=def_parf,part = "header")
+      def_par <- fp_par(text.align = "center")
+      ft<-style(ft,2:sph,2:ncol(bodyc),pr_p=def_par,part = "header")
+      ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
+      def_cell<-fp_border(color = "black",width = 1)
+      ft<-surround(ft,2,1:ncol(newtb),border.top=def_cell,part = "header")
+      ft<-surround(ft,sph+1,1:ncol(newtb),border.bottom =def_cell,part = "header")
+      ft<-padding(ft, padding  = 0, part = "header")
+      ft <- height(ft, height = 0, part = "header")
+      ft <- hrule(ft, rule = "exact", part = "header")
+      ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
+      if(notefoot!=""){
+        ft<-add_footer_lines(ft,paste("Note:",notefoot))
+      }
+      ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
+      ft<-fontsize(ft,size=ftsz,part = "all")
+      return(ft)
+    }
+
+  }
+
 }
