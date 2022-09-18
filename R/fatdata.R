@@ -51,7 +51,7 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
     ft<-style(ft,pr_c=def_cell,part = "header")
 
   }else{
-    if(tabname=""&notehead=""){
+    if(tabname==""&notehead==""){
       ft<-border_remove(ft)
       def_par <- fp_par(text.align = align)
       ft<-style(ft,i=1,j=2:nc,pr_p=def_par,part = "header")
