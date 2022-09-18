@@ -60,7 +60,7 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
       ft<-surround(ft,1,1:nc,border.top=def_cell,part = "header")
       ft<-surround(ft,1,1:nc,border.bottom =def_cell,part = "header")
     }else{
-      heads<-paste0(notehead,"\n",tabname)
+      heads<-paste0(tabname,"\n",notehead)
       ft<-add_header_lines(ft,values =heads )
       ft<-border_remove(ft)
       def_par <- fp_par(text.align = align)
