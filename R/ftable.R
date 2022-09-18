@@ -47,7 +47,7 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
 
   ft<-flextable(bodyc)
 
-  if(sposit>1|langu!="C"){
+  if(sposit>1|langu!="C"|(tabname==""&notehead=="")){
     sph<-sposit+1
     for(adhd in sposit:1){
       ft<-add_header_row(ft,values = as.vector(t(newtb[adhd,])),
