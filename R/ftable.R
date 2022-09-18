@@ -138,8 +138,7 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
       ft <- hrule(ft, rule = "exact", part = "header")
       ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
       ft<-add_footer_lines(ft,)
-      ft<-add_footer_lines(ft,paste("Note:",notefoot,"∗∗, ∗∗ and ∗ represent statistical significance at the 1%
-, 5% and 10% level, respectively."))
+      ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in brackets. ∗∗, ∗∗ and ∗ represent statistical significance at the 1%, 5% and 10% level, respectively."))
       ft<-fontsize(ft,size=ftsz,part = "all")
       return(ft)
     }else{
@@ -158,8 +157,7 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
       ft <- height(ft, height = 0, part = "header")
       ft <- hrule(ft, rule = "exact", part = "header")
       ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
-      ft<-add_footer_lines(ft,paste("Note:",notefoot,"∗∗∗ ,∗∗ and ∗ represent statistical significance at the 1%
-, 5% and 10% level, respectively."))
+      ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in brackets. ∗∗, ∗∗ and ∗ represent statistical significance at the 1%, 5% and 10% level, respectively."))
       ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
       ft<-fontsize(ft,size=ftsz,part = "all")
       return(ft)
