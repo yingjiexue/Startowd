@@ -19,6 +19,8 @@ fmmodel(
 
 \item{langu}{is a mark which means your paper enviroment is chinese or English, the default is "C", if you want to create a table in English, you can set parameter langu="E".}
 
+\item{tabname}{add table name to header}
+
 \item{notehead}{is table footer, the default is none.}
 
 \item{ftsz}{is a integer, you can set you table font size by it. the default is 9.}

@@ -5,16 +5,30 @@
 \alias{fatdat}
 \title{fmtdata}
 \usage{
-fatdat(x, ftsz = 9, ftname = "Time New Roma", align = "center")
+fatdat(
+  x,
+  langu = "C",
+  tabname = "",
+  notehead = "",
+  ftsz = 9,
+  ftname = "Time New Roma",
+  align = "center"
+)
 }
 \arguments{
 \item{x}{A data frame}
 
-\item{ftsz}{the size of font in the table}
+\item{langu}{is a mark which means your paper enviroment is chinese or English, the default is "C", if you want to create a table in English, you can set parameter langu="E".}
 
-\item{ftname}{the name of font in the table(default:9pt)}
+\item{tabname}{add table name to header}
 
-\item{align}{a align way of the table text(default:Time New Roma)}
+\item{notehead}{is table footer, the default is none.}
+
+\item{ftsz}{the size of font in the table(default:9pt)}
+
+\item{ftname}{the name of font in the table(default:Time New Roma)}
+
+\item{align}{a align way of the table text(default:center)}
 }
 \value{
 The default method returns table

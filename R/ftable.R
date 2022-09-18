@@ -6,7 +6,7 @@
 #'
 #' @param tab A data frame
 #' @param ftsz the size of font in the table
-#' @param ftname the name of font in the table
+#' @param tabname add table name to header
 #' @param langu is a mark which means your paper enviroment is chinese or English, the default is "C", if you want to create a table in English, you can set parameter langu="E".
 #' @param notehead is a note before the table header,the default is none.
 #' @param notehead is table footer, the default is none.
@@ -47,7 +47,7 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
 
   ft<-flextable(bodyc)
 
-  if(sposit>1|langu!="C"|(tabname==""&notehead=="")){
+  if(sposit>1|(langu!="C"&tabname!="")){
     sph<-sposit+1
     for(adhd in sposit:1){
       ft<-add_header_row(ft,values = as.vector(t(newtb[adhd,])),
