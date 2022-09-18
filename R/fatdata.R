@@ -50,10 +50,7 @@ fatdat<-function(x,langu="C",tabname="",notehead="",ftsz=9,ftname="Time New Roma
                         border.bottom = fp_border(color = "black",width = 1))
     ft<-style(ft,pr_c=def_cell,part = "header")
     def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))
-    ft<-style(ft,nr,1:nc,pr_c=def_bott)
-    ft<-set_table_properties(ft, layout = "autofit")
-    ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
-    ft<-fontsize(ft,size=ftsz,part = "all")
+
   }else{
     heads<-paste0(tabname,"\n",notehead)
     ft<-add_header_lines(ft,values =heads )
@@ -65,12 +62,11 @@ fatdat<-function(x,langu="C",tabname="",notehead="",ftsz=9,ftname="Time New Roma
     ft<-surround(ft,2,1:nc,border.top=def_cell,part = "header")
     ft<-surround(ft,2,1:nc,border.bottom =def_cell,part = "header")
     def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))
-    ft<-style(ft,nr+1,1:nc,pr_c=def_bott)
-    ft<-set_table_properties(ft, layout = "autofit")
-    ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
-    ft<-fontsize(ft,size=ftsz,part = "all")
   }
-
+  ft<-style(ft,nr,1:nc,pr_c=def_bott)
+  ft<-set_table_properties(ft, layout = "autofit")
+  ft<-font(ft,fontname=stri_escape_unicode(ftname),part="all")
+  ft<-fontsize(ft,size=ftsz,part = "all")
   return(ft)
 
 }
