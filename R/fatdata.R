@@ -60,23 +60,32 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
       ft<-surround(ft,1,1:nc,border.top=def_cell,part = "header")
       ft<-surround(ft,1,1:nc,border.bottom =def_cell,part = "header")
     }else{
-      heads<-ifelse(tabname=="",notehead,
-                    ifelse(notehead=="",tabname,
-                           paste0(tabname,"\n",notehead)))
-      ft<-add_header_lines(ft,values =heads )
+      if(tabname==""){
+        ft<-add_header_lines(ft,values =notehead )
+        ns=2
+      }else{
+        if(notehead==""){
+          ft<-add_header_lines(ft,values =tabname )
+          ns=2
+        }else{
+          ft<-add_header_lines(ft,values =tabname )
+          ft<-add_header_lines(ft,values =notehead )
+          ns=3
+        }
+      }
       ft<-border_remove(ft)
       def_par <- fp_par(text.align = align)
-      ft<-style(ft,i=2,j=1:nc,pr_p=fp_par(text.align = "justify"),part = "header")
+      ft<-style(ft,i=ns,j=1:nc,pr_p=fp_par(text.align = "justify"),part = "header")
       ft<-style(ft,1:nr,2:nc,pr_p=def_par)
       def_cell<-fp_border(color = "black",width = 1)
-      ft<-surround(ft,2,1:nc,border.top=def_cell,part = "header")
-      ft<-surround(ft,2,1:nc,border.bottom =def_cell,part = "header")
+      ft<-surround(ft,ns,1:nc,border.top=def_cell,part = "header")
+      ft<-surround(ft,ns,1:nc,border.bottom =def_cell,part = "header")
       }
   }
 
   if(notefoot!=""){
     ft<-add_footer_lines(ft,notefoot)
-    ft<-style(ft,1,2:nc,pr_p=fp_par(text.align = "justify"),part = "footer")
+    ft<-style(ft,1,1:nc,pr_p=fp_par(text.align = "justify"),part = "footer")
   }
 
   def_bott<-fp_cell(border.bottom = fp_border(color = "black",width = 1))

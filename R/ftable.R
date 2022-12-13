@@ -139,19 +139,28 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
       ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
       ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in parentheses. \u002a\u002a\u002a, \u002a\u002a and \u002a represent statistical significance at the 1%, 5% and 10% level, respectively."))
     }else{
-      heads<-ifelse(tabname=="",notehead,
-                    ifelse(notehead=="",tabname,
-                           paste0(tabname,"\n",notehead)))
-      ft<-add_header_lines(ft,values =heads )
+      if(tabname==""){
+        ft<-add_header_lines(ft,values =notehead )
+        ns=2
+      }else{
+        if(notehead==""){
+          ft<-add_header_lines(ft,values =tabname )
+          ns=2
+        }else{
+          ft<-add_header_lines(ft,values =tabname )
+          ft<-add_header_lines(ft,values =notehead )
+          ns=3
+        }
+      }
       ft<-border_remove(ft)
       def_parf <- fp_par(text.align = "justify")
-      ft<-style(ft,1,1:ncol(bodyc),pr_p=def_parf,part = "header")
+      ft<-style(ft,1:(ns-1),1:ncol(bodyc),pr_p=def_parf,part = "header")
       def_par <- fp_par(text.align = "center")
-      ft<-style(ft,2:(sph+1),2:ncol(bodyc),pr_p=def_par,part = "header")
+      ft<-style(ft,ns:(sph+ns-1),2:ncol(bodyc),pr_p=def_par,part = "header")
       ft<-style(ft,1:nrow(bodyc),2:ncol(bodyc),pr_p=def_par,part = "body")
       def_cell<-fp_border(color = "black",width = 1)
-      ft<-surround(ft,2,1:ncol(newtb),border.top=def_cell,part = "header")
-      ft<-surround(ft,sph+1,1:ncol(newtb),border.bottom =def_cell,part = "header")
+      ft<-surround(ft,ns,1:ncol(newtb),border.top=def_cell,part = "header")
+      ft<-surround(ft,(sph+ns-1),1:ncol(newtb),border.bottom =def_cell,part = "header")
       ft<-padding(ft, padding  = 0, part = "header")
       ft <- height(ft, height = 0, part = "header")
       ft <- hrule(ft, rule = "exact", part = "header")
@@ -161,7 +170,7 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
     if(notefoot==""){
       ft<-style(ft,1,2:ncol(bodyc),pr_p=fp_par(text.align = "left"),part = "footer")
     }else{
-      ft<-style(ft,1,2:ncol(bodyc),pr_p=fp_par(text.align = "justify"),part = "footer")
+      ft<-style(ft,1,1:ncol(bodyc),pr_p=fp_par(text.align = "justify"),part = "footer")
     }
     ft<-font(ft,fontname=ftname,part="all")
     ft<-fontsize(ft,size=ftsz,part = "all")
