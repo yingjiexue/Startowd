@@ -66,10 +66,12 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
       }else{
         if(notehead==""){
           ft<-add_header_lines(ft,values =tabname )
+          ft <- bold(ft,i=1, bold = TRUE, part = "header")
           ns=2
         }else{
           ft<-add_header_lines(ft,values =notehead )
           ft<-add_header_lines(ft,values =tabname )
+          ft <- bold(ft,i=1, bold = TRUE, part = "header")
           ns=3
         }
       }
