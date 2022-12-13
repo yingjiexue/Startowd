@@ -68,8 +68,8 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
           ft<-add_header_lines(ft,values =tabname )
           ns=2
         }else{
-          ft<-add_header_lines(ft,values =tabname )
           ft<-add_header_lines(ft,values =notehead )
+          ft<-add_header_lines(ft,values =tabname )
           ns=3
         }
       }
