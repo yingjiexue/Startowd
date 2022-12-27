@@ -32,7 +32,7 @@
 #'
 
 
-fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="Time New Roma",align="center"){
+fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",otherhead="",ftsz=9,ftname="Time New Roma",align="center"){
   len<-length(unique(names(x)))
   if(len==1){
     names(x)<-unlist(x[1,])
@@ -42,6 +42,13 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
   nr<-nrow(ft$body$dataset)
   nc<-ncol(ft$body$dataset)
   if(langu=="C"){
+    if(otherhead!=""){
+      len<-length(otherhead)
+      for(i in 1:len){
+        ft<-add_header_lines(ft,values =otherhead[i] )
+      }
+    }
+
     ft<-border_remove(ft)
     def_par <- fp_par(text.align = align)
     ft<-style(ft,j=2:nc,pr_p=def_par,part = "header")
@@ -51,6 +58,12 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname="T
     ft<-style(ft,pr_c=def_cell,part = "header")
 
   }else{
+    if(otherhead!=""){
+      len<-length(otherhead)
+      for(i in 1:len){
+        ft<-add_header_lines(ft,values =otherhead[i] )
+      }
+    }
     if(tabname==""&notehead==""){
       ft<-border_remove(ft)
       def_par <- fp_par(text.align = align)
