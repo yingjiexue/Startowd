@@ -90,6 +90,7 @@ fatdat<-function(x,langu="C",tabname="",notehead="",notefoot="",otherhead="",fts
       }
       ft<-border_remove(ft)
       ft<-padding(ft, padding  = 0, part = "header")
+      ft <- height(ft, height = 0, part = "header")
       def_par <- fp_par(text.align = align)
       ft<-style(ft,i=ns,j=1:nc,pr_p=fp_par(text.align = "justify"),part = "header")
       ft<-style(ft,1:nr,2:nc,pr_p=def_par)
