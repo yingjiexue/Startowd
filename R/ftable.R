@@ -137,7 +137,8 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
       ft <- height(ft, height = 0, part = "header")
       ft <- hrule(ft, rule = "exact", part = "header")
       ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
-      ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in parentheses. \u002a\u002a\u002a, \u002a\u002a and \u002a represent statistical significance at the 1%, 5% and 10% level, respectively."))
+      ft<-add_footer_lines(ft,notefoot)
+      #ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in parentheses. \u002a\u002a\u002a, \u002a\u002a and \u002a represent statistical significance at the 1%, 5% and 10% level, respectively."))
     }else{
       if(tabname==""){
         ft<-add_header_lines(ft,values =notehead )
@@ -167,7 +168,8 @@ fmmodel<-function(tab,langu="C",tabname="",notehead="",notefoot="",ftsz=9,ftname
       ft <- height(ft, height = 0, part = "header")
       ft <- hrule(ft, rule = "exact", part = "header")
       ft<-surround(ft,c(obs-sposit-2,nrow(bodyc)),1:ncol(bodyc),border.bottom =def_cell,part = "body")
-      ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in parentheses. \u002a\u002a\u002a, \u002a\u002a and \u002a represent statistical significance at the 1%, 5% and 10% level, respectively."))
+      ft<-add_footer_lines(ft,notefoot)
+      #ft<-add_footer_lines(ft,paste("Note:",notefoot,"t-statistics are given in parentheses. \u002a\u002a\u002a, \u002a\u002a and \u002a represent statistical significance at the 1%, 5% and 10% level, respectively."))
     }
     if(notefoot==""){
       ft<-style(ft,1,2:ncol(bodyc),pr_p=fp_par(text.align = "left"),part = "footer")
