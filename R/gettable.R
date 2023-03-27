@@ -29,5 +29,7 @@ gettable<-function(filename){
       html_table(fill = T,header = T)
     tab<-gettab[apply(gettab,MARGIN = 1,function(charc) sum(is.na(charc)|charc=='')!=ncol(gettab)),]
   }
+
+  tab<-data.frame(apply(tab, 2, gsub,pattern="\\s+", replacement=""))
   return(tab)
 }
