@@ -25,7 +25,7 @@ gettable<-function(filename){
   if(!str_detect(filename,'.html|.htm')){
     return(stri_encode("\u6587\u4ef6\u7c7b\u578b\u9519\u8bef\uff0c\u8bf7\u8f93\u5165htm\u6216html\u683c\u5f0f\u7684\u6587\u4ef6"))
   }else{
-    gettab<-read_html(filename)%>%
+    gettab<-read_html(filename,encoding = "UTF-8")%>%
       html_node("table")%>%
       html_table(fill = T,header = T)
     tab<-gettab[apply(gettab,MARGIN = 1,function(charc) sum(is.na(charc)|charc=='')!=ncol(gettab)),]
