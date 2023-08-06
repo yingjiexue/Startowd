@@ -31,7 +31,7 @@ gettable<-function(filename){
     tab<-gettab[apply(gettab,MARGIN = 1,function(charc) sum(is.na(charc)|charc=='')!=ncol(gettab)),]
     wed<-gettab|>as.vector()|>unlist()|>paste0(collapse = "")|>str_detect("\\*")
     if(wed){
-      tab[,2:ncol(tab)]<-apply(tab[,2:ncol(tab)], 2, gsub,pattern="\\s+", replacement="")
+      tab[3:nrow(tab),2:ncol(tab)]<-apply(tab[3:nrow(tab),2:ncol(tab)], 2, gsub,pattern="\\s+", replacement="")
       tab<-data.frame(tab)
     }
 
